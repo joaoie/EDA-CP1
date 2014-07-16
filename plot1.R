@@ -26,30 +26,3 @@ hist(mydata$Global_active_power,col="RED",main="Global Active Power",xlab="Globa
 dev.off()
 
 
-##Open PNG device for plot2 with specified dimensions
-png(file="plot2.png",width=480,height=480)
-## Creates plot 2
-plot(mydata$DateTime,mydata$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
-dev.off()
-
-##Open PNG device for plot3 with specified dimensions
-png(file="plot3.png",width=480,height=480)
-
-plot(mydata$DateTime,mydata$Sub_metering_1,type="l",col="BLACK",xlab="",ylab="Energy sub metering")
-lines(mydata$DateTime,mydata$Sub_metering_2,type="l",col="RED")
-lines(mydata$DateTime,mydata$Sub_metering_3,type="l",col="BLUE")
-legend("topright",names(mydata)[7:9],lty=c(1,1,1),lwd=c(1,1,1),col=c("BLACK","RED","BLUE"),seg.len=2)
-dev.off()
-
-png(file="plot4.png",width=480,height=480)
-par(mfrow = c(2, 2)) 
-with(mydata, {
-  plot(DateTime,Global_active_power,type="l",xlab="",ylab="Global Active Power")
-  plot(DateTime,Voltage,type="l",xlab="datetime",ylab="Voltage")
-  plot(DateTime,Sub_metering_1,type="l",col="BLACK",xlab="",ylab="Energy sub metering")
-  lines(DateTime,Sub_metering_2,type="l",col="RED")
-  lines(DateTime,Sub_metering_3,type="l",col="BLUE")
-  legend("topright",box.lty=0,names(mydata)[7:9],lty=c(1,1,1),lwd=c(1,1,1),col=c("BLACK","RED","BLUE"),seg.len=2)
-  plot(DateTime,Global_reactive_power,type="l",xlab="datetime",ylab="Global_reactive_power")
-})  
-dev.off()
